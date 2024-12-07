@@ -4,9 +4,9 @@
 This app is designed with scalability in mind. It follows the MVVM architecture and adheres to clean code practices. The app maintains strict typography standards, including fonts, paddings, and sizes. The codebase is well-structured and modular.
 
 ## Requirements
-- iOS 18
-- Swift 5
-- Xcode+
+- iOS 18+
+- Swift 5+
+- Xcode16+
 
 ### Setup
 - `git clone https://github.com/nand4655/nand-kishore-AnswersAi-iOS.git`
@@ -18,9 +18,9 @@ This app is designed with scalability in mind. It follows the MVVM architecture 
 
 ## What's Included?
 - **Typography**: Consistent and scalable typography.
-- **Dynamic Data Loading**: Data is dynamically loaded via stubs.
+- **Dynamic Data Loading**: Data is dynamically loaded via stubs. Check `TodayGetAPIRequest` and `APIService` implementation.
 - **Adaptive Layout**: Adoptable layout with dynamic content.
-- **Hero Animations**: Hero animation on card tap, discussion button, scroll pull, and swipe right pop.
+- **Hero Animations**: Hero animation on card tap, dismiss button, on scroll pull, and swipe right pop.
 - **App Install Dialog**: Spring animation on CardDetail scroll.
 - **App Install Sheet**: Physical button press notifier with beat animation.
 - **Share Sheet**: Available on CardDetail.
@@ -30,6 +30,7 @@ This app is designed with scalability in mind. It follows the MVVM architecture 
 - **Shuffle Architecture**: Enhance the architecture to support multiple types of cards using the existing `cardType`.
 - **App Install Progress**: Implement a progress indicator for app installations.
 - **Light Mode Support**: Add support for light mode.
+- **Swift6 Strict Concurrency**: Add support strict concurrency.
 - **Physical Button Press Notifier**: Adjust the animation offset for the physical button press notifier to ensure correct positioning across different devices.
 
 https://github.com/user-attachments/assets/427c0d8e-62ee-4389-99c5-ef7900b65975
