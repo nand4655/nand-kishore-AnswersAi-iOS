@@ -31,3 +31,6 @@ This app is designed with scalability in mind. It follows the MVVM architecture 
 - **App Install Progress**: Implement a progress indicator for app installations.
 - **Light Mode Support**: Add support for light mode.
 - **Physical Button Press Notifier**: Adjust the animation offset for the physical button press notifier to ensure correct positioning across different devices.
+
+https://github.com/user-attachments/assets/427c0d8e-62ee-4389-99c5-ef7900b65975
+  
