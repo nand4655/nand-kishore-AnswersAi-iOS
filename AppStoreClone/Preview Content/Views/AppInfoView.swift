@@ -10,7 +10,13 @@
 import Foundation
 import SwiftUI
 
+enum AppInfoViewStyle {
+    case dark
+    case light
+}
+
 struct AppInfoView: View {
+    let style: AppInfoViewStyle
     @Binding var appInfoModel: AppPurchaseInfoModel?
     let addMaterialBackground: Bool
     var actionButtonClick: ((AppInstallStatus) -> Void)?
@@ -19,7 +25,7 @@ struct AppInfoView: View {
     var body: some View {
         if let appInfoModel {
             VStack {
-                HStack() {                    
+                HStack(alignment: .center) {
                     if let generateUrl = URL(string: appInfoModel.image) {
                         CachedAsyncImage(url: generateUrl, cache: cache, onImageDownload: { img in
                         }, placeholder: {
@@ -45,12 +51,12 @@ struct AppInfoView: View {
                         Text(appInfoModel.appName ?? "")
                             .font(.s1)
                             .bold()
-                            .foregroundStyle(Color(.white))
+                            .foregroundStyle(style == .dark ? .black : .white)
                             .multilineTextAlignment(.leading)
                         
                         Text(appInfoModel.productLine ?? "")
-                            .font(.s1)
-                            .foregroundStyle(.white.opacity(0.7))
+                            .font(.s2)
+                            .foregroundStyle(style == .dark ? .black.opacity(0.6) : .white.opacity(0.7))
                             .multilineTextAlignment(.leading)
                     }
                     
@@ -62,22 +68,23 @@ struct AppInfoView: View {
                         }) {
                             Text(appInfoModel.installStatus == .installed ? String(localized: "open") : String(localized: "get"))
                                 .font(.s1h)
-                                .foregroundStyle(.white)
+                                .foregroundStyle(style == .dark ? .blue.opacity(0.9) : .white)
                                 .padding(.horizontal, Dimens.unit24)
                         }
                         .frame(height: Dimens.Size.unit32)
                         .background(.gray.opacity(0.3))
                         .clipShape(.rect(cornerRadius: Dimens.CornerRadius.unit16))
-                        .padding(.top, Dimens.unit16)
+                
                         
                         if appInfoModel.installStatus == .notInstalled {
                             Text(String(localized: "inAppPurchases"))
                                 .font(.s4)
-                                .foregroundStyle(.white.opacity(0.9))
+                                .foregroundStyle(style == .dark ? .black.opacity(0.6) : .white.opacity(0.9))
                         }
                     }
                 }
-                .padding(Dimens.unit12)
+                .padding(.horizontal, Dimens.unit12)
+                .padding(.vertical, Dimens.unit6)
             }
             .background(.ultraThinMaterial)
         }
@@ -86,7 +93,7 @@ struct AppInfoView: View {
 
 #Preview("AppInfoView") {
     NavigationStack {
-        AppInfoView(appInfoModel: .constant(AppPurchaseInfoModel(installStatus: .notInstalled, image: "", appName: "Solitaire", productLine: "NK V \nAPP", userEmail: "abc.abc.abc", publisher: "NK V")), addMaterialBackground: true
+        AppInfoView(style: .dark, appInfoModel: .constant(AppPurchaseInfoModel(installStatus: .notInstalled, image: "", appName: "Solitaire", productLine: "NK V \nAPP", userEmail: "abc.abc.abc", publisher: "NK V")), addMaterialBackground: true
         )
     }
 }

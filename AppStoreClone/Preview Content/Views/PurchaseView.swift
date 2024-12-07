@@ -22,13 +22,15 @@ struct PurchaseView: View {
                         .font(.t1)
                         .bold()
                         .frame(maxWidth: .infinity, alignment: .leading)
+                    
                     Button(action: {
                         showSheet.toggle()
                     }) {
                         Image(systemName: "multiply.circle.fill")
                             .resizable()
-                            .frame(width: Dimens.Size.unit24, height: Dimens.Size.unit24)
-                            .foregroundStyle(.white.opacity(0.6))
+                            .foregroundStyle(.gray.opacity(0.5))
+                            .frame(width: Dimens.Size.unit24, height: Dimens.Size.unit24)            
+                            .clipShape(Circle())
                     }
                 }
                 
@@ -54,24 +56,22 @@ struct PurchaseView: View {
                             HStack(spacing: 2) {
                                 Text(purchaseInfo?.appName ?? "")
                                     .font(.s1)
-                                    .bold()
+
                                 
                                 Image(systemName: "17.square")
                             }
                             
                             if let productLine = purchaseInfo?.productLine {
                                 Text(productLine)
-                                    .font(.s2)
-                                    .bold()
-                                    .foregroundStyle(.white.opacity(0.7))
+                                    .font(.s3)
+                                    .foregroundStyle(.black.opacity(0.7))
                                     .lineLimit(2)
                             }
                             
                             if let publisher = purchaseInfo?.publisher {
                                 Text(publisher)
-                                    .font(.s2)
-                                    .bold()
-                                    .foregroundStyle(.white.opacity(0.7))
+                                    .font(.s3)
+                                    .foregroundStyle(.black.opacity(0.7))
                                     .lineLimit(2)
                             }
                         }
@@ -82,14 +82,13 @@ struct PurchaseView: View {
                     
                     if let userEmail = purchaseInfo?.userEmail {
                         Text("Account: \(userEmail)")
-                            .font(.s1)
-                            .bold()
-                            .foregroundStyle(.white.opacity(0.7))
+                            .font(.s3)
+                            .foregroundStyle(.black.opacity(0.7))
                             .padding(.top, Dimens.unit6)
                     }
                 }
                 .padding()
-                .background(.white.opacity(0.07))
+                .background(.white.opacity(0.9))
                 .clipShape(.rect(cornerRadius: Dimens.CornerRadius.unit12))
                 
                 Image(systemName: "button.vertical.right.press")
@@ -99,11 +98,12 @@ struct PurchaseView: View {
                     .padding(.top, Dimens.unit12)
                 
                 Text("Confirm with Side Button")
-                    .font(.t2)
+                    .font(.s2)
                     .padding(.top, Dimens.unit6)
             }
             .padding()
         }
+        .background(.gray.opacity(0.15))
         .frame(maxWidth: .infinity, alignment: .bottom)
         
     }
@@ -112,6 +112,6 @@ struct PurchaseView: View {
 #Preview("Purchase") {
     NavigationStack {
         PurchaseView(showSheet: .constant(true), purchaseInfo: .constant(AppPurchaseInfoModel(installStatus: .notInstalled, image: "https://cdn.dribbble.com/userupload/10867807/file/original-0ab84e6336e44d251490a9f534d1103b.png?resize=752x&vertical=center", appName: "Solitaire", productLine: "APP", userEmail: "abc.abc.abc", publisher: "NKV")))
-            .background(.orange.opacity(0.7))
+            //.background(.orange.opacity(0.7))
     }
 }

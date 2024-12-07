@@ -27,7 +27,7 @@ struct TodayGetAPIRequest: APIRequestable {
       "headline": "World of Apps",
       "spotline": "Daily picks of the best apps"
     },
-    "image": "https://thesologlobetrotter.com/wp-content/uploads/2020/08/machu-picchu-1569324_1280-768x508.jpg",
+    "image": "https://cdn.dribbble.com/userupload/16963758/file/original-c80265d5d3b7ef374496382e34a6d46b.jpg?resize=752x&vertical=center",
     "appCardImageOverlayModel": {
       "subheadline": "Sponsored",
       "headline": "Boost Your Productivity",

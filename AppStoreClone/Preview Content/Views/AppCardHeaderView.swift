@@ -20,14 +20,14 @@ struct AppCardHeaderView: View {
                     Text(subheadline)
                         .font(.s1)
                         .bold()
-                        .foregroundStyle(.white.opacity(0.5))
+                        .foregroundStyle(.black.opacity(0.5))
                 }
                 
                 if let headline = model.headline {
                     Text(headline)
                         .font(.h1)
                         .bold()
-                        .foregroundStyle(Color(.white))
+                        .foregroundStyle(Color(.black))
                         .lineLimit(2)
                 }
                 
@@ -35,7 +35,7 @@ struct AppCardHeaderView: View {
                     Text(spotline)
                         .font(.s1)
                         .bold()
-                        .foregroundStyle(.white.opacity(0.5))
+                        .foregroundStyle(.black.opacity(0.5))
                 }
             }
         }

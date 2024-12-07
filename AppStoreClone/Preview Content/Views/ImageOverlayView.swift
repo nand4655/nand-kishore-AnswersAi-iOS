@@ -45,7 +45,7 @@ struct ImageOverlayView: View {
             Color.clear
                 .frame(height: Dimens.unit6)
             
-            AppInfoView(appInfoModel: $appInfoModel, addMaterialBackground: true) { status in
+            AppInfoView(style: .light, appInfoModel: $appInfoModel, addMaterialBackground: true) { status in
                 actionButtonClick?(status)
             }
         }

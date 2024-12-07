@@ -22,6 +22,14 @@ struct AppCardModel: Identifiable, Hashable, Decodable {
     var appCardImageOverlayModel: AppCardImageOverlayModel?
     var appInfoModel: AppPurchaseInfoModel?
     
+    init(cardType: AppCardType, cardHeader: AppCardHeaderModel? = nil, image: String, appCardImageOverlayModel: AppCardImageOverlayModel? = nil, appInfoModel: AppPurchaseInfoModel? = nil) {
+        self.cardType = cardType
+        self.cardHeader = cardHeader
+        self.image = image
+        self.appCardImageOverlayModel = appCardImageOverlayModel
+        self.appInfoModel = appInfoModel
+    }
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         cardType = try container.decode(AppCardType.self,

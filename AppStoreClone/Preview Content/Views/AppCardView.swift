@@ -123,15 +123,15 @@ struct AppCardView: View {
                 
                 .overlay(alignment: .bottom) {
                     if showBottomView {
-                        AppInfoView(appInfoModel: $model.appInfoModel, addMaterialBackground: true) { status in
+                        AppInfoView(style: .dark, appInfoModel: $model.appInfoModel, addMaterialBackground: true) { status in
                             if status != .installed {
                                 showPurchaseSheet.toggle()
                             }
                         }
                         .ignoresSafeArea(.all, edges: [.bottom])
-                        .clipShape(.rect(cornerRadius: Dimens.CornerRadius.unit28))
+                        .clipShape(.rect(cornerRadius: Dimens.CornerRadius.unit12))
                         .transition(.move(edge: .bottom))
-                        .offset(y: safeAreaInsets.bottom - Dimens.unit12)
+                        .offset(y: safeAreaInsets.bottom - Dimens.unit24)
                         .animation(.spring(bounce: 0.5))
                         .padding(Dimens.unit6)
                     }
@@ -140,6 +140,7 @@ struct AppCardView: View {
                     ZStack(alignment: .topTrailing) {
                         closeButton
                             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+                            .padding(20)
                     }
                 }
                 .overlay(alignment: .top) {
@@ -213,14 +214,15 @@ struct AppCardView: View {
             dismiss()
         }) {
             Image(systemName: "xmark")
-                .fontWeight(.bold)
-                .frame(width: Dimens.Size.unit20, height: Dimens.Size.unit20)
-                .padding(Dimens.unit12)
-                .background(.ultraThinMaterial)
+                .resizable()
+                .scaledToFit()
+                .bold()
+                .frame(width: Dimens.Size.unit12, height: Dimens.Size.unit12)
+                .padding(Dimens.unit6)
+                .background(.white.opacity(0.8))
                 .clipShape(Circle())
         }
-        .tint(.white)
-        .padding([.horizontal, .top], Dimens.unit16)
+        .tint(.gray)
     }
 }
 
@@ -237,7 +239,7 @@ struct HeightPreferenceKey: PreferenceKey {
     @Previewable @State var viewModel = TodayViewModel()
     @Previewable @Namespace var hero
     ScrollView {
-        AppCardView(animation: hero, model: .constant(TodayViewModel().cards[0]), style: .list)
+        AppCardView(animation: hero, model: .constant(AppCardModel(cardType: .plain, cardHeader: AppCardHeaderModel(subheadline: "New Update", headline: "World of Apps", spotline: "Daily picks of the best apps"), image: "https://thesologlobetrotter.com/wp-content/uploads/2020/08/machu-picchu-1569324_1280-768x508.jpg", appCardImageOverlayModel: AppCardImageOverlayModel(subheadline: "Sponsored", headline: "Boost Your Productivity", spotline: "Limited-time offer"), appInfoModel: AppPurchaseInfoModel(installStatus: .notInstalled, image: "https://cdn.dribbble.com/userupload/16140467/file/original-1978a512ad336c5a65d26100255e1363.jpg?resize=752x&vertical=center", appName: "ShareChat", productLine: "App", userEmail: "abc.abc.abc", publisher: "NK V"))), style: .list)
     }
 }
 
@@ -245,7 +247,7 @@ struct HeightPreferenceKey: PreferenceKey {
     @Previewable @Namespace var hero
     NavigationStack {
         ScrollView {
-            AppCardView(animation: hero, model: .constant(TodayViewModel().cards[0]), style: .detail)
+            AppCardView(animation: hero, model: .constant(AppCardModel(cardType: .plain, cardHeader: AppCardHeaderModel(subheadline: "New Update", headline: "World of Apps", spotline: "Daily picks of the best apps"), image: "https://thesologlobetrotter.com/wp-content/uploads/2020/08/machu-picchu-1569324_1280-768x508.jpg", appCardImageOverlayModel: AppCardImageOverlayModel(subheadline: "Sponsored", headline: "Boost Your Productivity", spotline: "Limited-time offer"), appInfoModel: AppPurchaseInfoModel(installStatus: .notInstalled, image: "https://cdn.dribbble.com/userupload/16140467/file/original-1978a512ad336c5a65d26100255e1363.jpg?resize=752x&vertical=center", appName: "ShareChat", productLine: "App", userEmail: "abc.abc.abc", publisher: "NK V"))), style: .detail)
         }
     }
 }
