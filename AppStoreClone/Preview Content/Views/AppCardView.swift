@@ -24,6 +24,8 @@ struct AppCardView: View {
     @State private var detentHeight: CGFloat = 0
     @Environment(\.safeAreaInsets) private var safeAreaInsets
     @Environment(\.imageCache) var cache: ImageCache
+    @State var scale: CGFloat = 0
+    @State var onListAppear: Bool = true
     
     var body: some View {
         switch style {
@@ -31,17 +33,42 @@ struct AppCardView: View {
                 VStack(alignment: .leading) {
                     AppCardHeaderView(model: $model.cardHeader)
                         .padding(.horizontal)
+                        .matchedTransitionSource(id: "header", in: animation)
+                        .animation(.easeInOut, value: onListAppear)
                     
                     imageView
                         .clipShape(RoundedRectangle(cornerRadius: Dimens.CornerRadius.unit16))
                         .shadow(radius: Dimens.CornerRadius.unit6)
-                        .padding([.horizontal, .bottom], Dimens.unit16)
+                        .padding([.horizontal, .vertical], Dimens.unit16)
+                        .matchedTransitionSource(id: "card.id", in: animation)
+                }
+                .onAppear {
+                    withAnimation {
+                        onListAppear = true
+                    }
+                }
+                .onDisappear {
+                    withAnimation {
+                        onListAppear = false
+                    }
                 }
                 
             case .detail:
                 ScrollView {
                     VStack(alignment: .leading) {
                         imageView
+                            .matchedTransitionSource(id: "card.id", in: animation)
+                            .animation(.easeInOut, value: scale)
+                            .onAppear {
+                                withAnimation {
+                                    scale = 1
+                                }
+                            }
+                            .onDisappear {
+                                withAnimation {
+                                    scale = 0
+                                }
+                            }
                         
                         VStack(alignment: .leading) {
                             Text(Texts.title)
@@ -130,7 +157,7 @@ struct AppCardView: View {
                         }
                         .ignoresSafeArea(.all, edges: [.bottom])
                         .clipShape(.rect(cornerRadius: Dimens.CornerRadius.unit12))
-                        .transition(.move(edge: .bottom))
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
                         .offset(y: safeAreaInsets.bottom - Dimens.unit24)
                         .animation(.spring(bounce: 0.5))
                         .padding(Dimens.unit6)

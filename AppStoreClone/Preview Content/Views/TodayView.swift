@@ -23,9 +23,10 @@ struct TodayView: View {
                             .navigationTransition(.zoom(sourceID: card.id, in: hero))
                     } label: {
                         AppCardView(animation: hero, model: card, style: .list)
+                            .matchedTransitionSource(id: card.id, in: hero)
+                            .buttonStyle(.plain)
                     }
-                    .matchedTransitionSource(id: card.id, in: hero)
-                    .buttonStyle(.plain)
+                  
                 }
             }
         }
