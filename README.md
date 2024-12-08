@@ -29,9 +29,12 @@ This app is designed with scalability in mind. It follows the MVVM architecture 
 ## What Can Be Improved?
 - **Shuffle Architecture**: Enhance the architecture to support multiple types of cards using the existing `cardType`.
 - **App Install Progress**: Implement a progress indicator for app installations.
-- **Light Mode Support**: Add support for light mode.
+- **Dark Mode Support**: Add support for dark mode.
 - **Swift6 Strict Concurrency**: Add support strict concurrency.
-- **Physical Button Press Notifier**: Adjust the animation offset for the physical button press notifier to ensure correct positioning across different devices.
+- **Physical Button Press Notifier position**: Adjust the animation offset for the physical button press notifier to ensure correct positioning across different devices.
 
-https://github.com/user-attachments/assets/427c0d8e-62ee-4389-99c5-ef7900b65975
   
+## Demo Video
+https://github.com/user-attachments/assets/3dc6cc1f-820f-46a1-b646-e4bcffde503d
+
+
