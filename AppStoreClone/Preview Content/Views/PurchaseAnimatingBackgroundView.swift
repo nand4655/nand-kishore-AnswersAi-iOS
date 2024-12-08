@@ -45,7 +45,6 @@ struct PurchaseAnimatingBackgroundView: View {
                 stopTimer()
             }
         }
-        
         .ignoresSafeArea()
     }
     

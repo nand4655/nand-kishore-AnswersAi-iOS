@@ -51,6 +51,14 @@ struct TodayGetAPIRequest: APIRequestable {
     "appCardImageOverlayModel": {
       "subheadline": "Get Started",
       "headline": "Are you a Solo Flyer?"
+    },
+    "appInfoModel": {
+      "installStatus": "notInstalled",
+      "image": "https://cdn.dribbble.com/userupload/8243758/file/original-d2e2e4dd1d77e789fb9a81d6d83a9513.png?resize=752x&vertical=center",
+      "appName": "Product & Icon",
+      "productLine": "Utilities",
+      "userEmail": "abc.abc.abc",
+      "publisher": "NK V"
     }
   },
   {

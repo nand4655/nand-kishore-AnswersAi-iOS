@@ -175,8 +175,8 @@ struct AppCardView: View {
                         PurchaseAnimatingBackgroundView(showOverlay: $showPurchaseSheet)
                             .frame(maxWidth: Dimens.w)
                             .frame(maxHeight: Dimens.h + Dimens.purchaseOverlayOffset)
+
                     }
-                    else { EmptyView()}
                 }
                 .sheet(isPresented: $showPurchaseSheet) {
                     PurchaseView(showSheet: $showPurchaseSheet, purchaseInfo: $model.appInfoModel)
